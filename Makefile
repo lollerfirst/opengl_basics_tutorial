@@ -6,19 +6,19 @@ DEPENDENCIES=-lGL -lGLEW -lSDL2 -LCGLM -lm
 TARGET=main.c
 OUTPUT=main
 LIB=./lib
-O_FILES=$(BIN)/error.o $(BIN)/texture.o $(BIN)/shader.o $(BIN)/mesh.o $(BIN)/view.o $(BIN)/vertex.o $(BIN)/transform.o $(LIB)/vector.o $(LIB)/stb_image.o
+O_FILES=$(BIN)/error.o $(BIN)/texture.o $(BIN)/shader.o $(BIN)/mesh.o $(BIN)/display.o $(BIN)/vertex.o $(BIN)/transform.o $(LIB)/vector.o $(LIB)/stb_image.o
 
-main: shader.o view.o mesh.o vertex.o texture.o error.o transform.o
+main: shader.o display.o mesh.o vertex.o texture.o error.o transform.o
 	$(CC) $(TARGET) $(O_FILES) -o $(OUTPUT) -I$(INCLUDE) $(DEPENDENCIES)
 
-debug: g-shader.o g-view.o g-mesh.o g-vertex.o g-texture.o g-error.o g-transform.o
+debug: g-shader.o g-display.o g-mesh.o g-vertex.o g-texture.o g-error.o g-transform.o
 	$(CC) $(TARGET) $(O_FILES) -o $(OUTPUT) -I$(INCLUDE) $(DEPENDENCIES) -g
 
 shader.o: $(INCLUDE)/narg.h $(INCLUDE)/shader.h $(SRC)/shader.c
 	$(CC) -c $(SRC)/shader.c -o $(BIN)/shader.o -I$(INCLUDE)
  
-view.o: $(INCLUDE)/view.h $(SRC)/view.c
-	$(CC) -c $(SRC)/view.c -o $(BIN)/view.o -I$(INCLUDE)
+display.o: $(INCLUDE)/display.h $(SRC)/display.c
+	$(CC) -c $(SRC)/display.c -o $(BIN)/display.o -I$(INCLUDE)
 
 vertex.o: $(INCLUDE)/vertex.h $(SRC)/vertex.c
 	$(CC) -c $(SRC)/vertex.c -o $(BIN)/vertex.o -I$(INCLUDE)
@@ -39,8 +39,8 @@ transform.o: $(INCLUDE)/transform.h
 g-shader.o: $(INCLUDE)/narg.h $(INCLUDE)/shader.h $(SRC)/shader.c
 	$(CC) -c $(SRC)/shader.c -o $(BIN)/shader.o -I$(INCLUDE) -g
 
-g-view.o: $(INCLUDE)/view.h $(SRC)/view.c
-	$(CC) -c $(SRC)/view.c -o $(BIN)/view.o -I$(INCLUDE) -g
+g-display.o: $(INCLUDE)/display.h $(SRC)/display.c
+	$(CC) -c $(SRC)/display.c -o $(BIN)/display.o -I$(INCLUDE) -g
 
 g-vertex.o: $(INCLUDE)/vertex.h $(SRC)/vertex.c
 	$(CC) -c $(SRC)/vertex.c -o $(BIN)/vertex.o -I$(INCLUDE) -g
