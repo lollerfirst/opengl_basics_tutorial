@@ -1,4 +1,4 @@
-#include <view.h>
+#include <display.h>
 
 Display display(const int width, const int height, const char* title){
     int check;
