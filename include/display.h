@@ -1,5 +1,5 @@
-#ifndef _VIEW_H_
-#define _VIEW_H_
+#ifndef _DISPLAY_H_
+#define _DISPLAY_H_
 
 #include <SDL2/SDL.h>
 #include <stdio.h>
